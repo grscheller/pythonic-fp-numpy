@@ -61,7 +61,7 @@ class HWrapNDArray:
         return f"np.{stripped_repr}"
 
     def __str__(self) -> str:
-        return f"hwap<\n{str(self._ndarray)}\n>"
+        return f"hwrap<\n{str(self._ndarray)}\n>"
 
 
 class HWrapNDArrayBool(HWrapNDArray):

@@ -14,63 +14,25 @@
 
 import numpy as np
 import numpy.typing as npt
-from typing import Any
 from boring_math.abstract_algebra.algebras.semigroup import Semigroup
+from pythonic_fp.numpy.hwrap import HWrapNDArrayNumber
 
-## Infrastructure setup
-
-
-class HashableNDArrayWrapper:
-    __slots__ = '_ndarray', '_array', '_hash', '_shape'
-
-    def __init__(self, ndarray: npt.NDArray[np.int32]) -> None:
-        self._ndarray = np.array(ndarray, copy=True)
-        self._ndarray.setflags(write=False)
-        self._hash = hash(
-            (
-                self._ndarray.tobytes(),
-                hash((self._ndarray.shape, self._ndarray.dtype)),
-            )
-        )
-
-    def __call__(self) -> npt.NDArray[Any]:
-        return np.array(self._ndarray, copy=True)
-
-    def __str__(self) -> str:
-        return f'hw<{str(self._ndarray)}>'
-
-    def __hash__(self) -> int:
-        return self._hash
-
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, HashableNDArrayWrapper):
-            return NotImplemented
-        if (
-            self._ndarray.shape != other._ndarray.shape
-            or self._ndarray.dtype != other._ndarray.dtype
-        ):
-            return False
-        return np.array_equal(self._ndarray, other._ndarray)
-
-
-## Implementation
-
-type I32_2x2 = HashableNDArrayWrapper[npt.NDArray[np.int32]]
+type I32_2x2 = HWrapNDArrayNumber[npt.NDArray[np.int32]]
 
 
 def matrix_mult(left: I32_2x2, right: I32_2x2) -> I32_2x2:
-    return HashableNDArrayWrapper(left() @ right())
+    return HWrapNDArrayNumber(left() @ right())
 
 
 m2x2 = Semigroup[I32_2x2](mult=matrix_mult)
 
-np_eye = HashableNDArrayWrapper(np.eye(2, dtype=np.int32))
-np_zero = HashableNDArrayWrapper(np.zeros((2, 2), dtype=np.int32))
-np_A = HashableNDArrayWrapper(np.array([[5, -1], [0, 2]], dtype=np.int32))
-np_B = HashableNDArrayWrapper(np.array([[2, -1], [-1, 2]], dtype=np.int32))
-np_C = HashableNDArrayWrapper(np.array([[1, 1], [1, 1]], dtype=np.int32))
-np_D = HashableNDArrayWrapper(np.array([[0, 1], [1, 0]], dtype=np.int32))
-np_E = HashableNDArrayWrapper(np.array([[11, -7], [-2, 4]], dtype=np.int32))
+np_eye = HWrapNDArrayNumber(np.eye(2, dtype=np.int32))
+np_zero = HWrapNDArrayNumber(np.zeros((2, 2), dtype=np.int32))
+np_A = HWrapNDArrayNumber(np.array([[5, -1], [0, 2]], dtype=np.int32))
+np_B = HWrapNDArrayNumber(np.array([[2, -1], [-1, 2]], dtype=np.int32))
+np_C = HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))
+np_D = HWrapNDArrayNumber(np.array([[0, 1], [1, 0]], dtype=np.int32))
+np_E = HWrapNDArrayNumber(np.array([[11, -7], [-2, 4]], dtype=np.int32))
 
 
 Eye = m2x2(np_eye)
@@ -104,7 +66,7 @@ class Test_bool3:
         assert A * B is E
 
     def test_create(self) -> None:
-        np_see = HashableNDArrayWrapper(np.array([[1, 1], [1, 1]], dtype=np.int32))
+        np_see = HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))
         See = m2x2(np_see)
         assert See == C
         assert See is C
@@ -113,5 +75,5 @@ class Test_bool3:
         Eye**5 == Eye
         Eye**5 is Eye
 
-    def test_annotated(self) -> None:
-        assert str(A()) == 'hw<[[ 5 -1]\n [ 0  2]]>'
+    def test_str(self) -> None:
+        assert str(A()) == 'hwrap<\n[[ 5 -1]\n [ 0  2]]\n>'
