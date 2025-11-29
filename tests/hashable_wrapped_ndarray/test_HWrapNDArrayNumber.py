@@ -15,7 +15,7 @@
 import numpy as np
 import numpy.typing as npt
 from boring_math.abstract_algebra.algebras.semigroup import Semigroup
-from pythonic_fp.numpy.hwrap import HWrapNDArrayNumber
+from pythonic_fp.numpy.hashable_wrapped_ndarray import HWrapNDArrayNumber
 
 type I32_2x2 = HWrapNDArrayNumber[npt.NDArray[np.int32]]
 
@@ -76,4 +76,4 @@ class Test_bool3:
         Eye**5 is Eye
 
     def test_str(self) -> None:
-        assert str(A()) == 'hwrap<\n[[ 5 -1]\n [ 0  2]]\n>'
+        assert str(A()) == 'hwrap<\n  [[ 5 -1]\n   [ 0  2]]\n>'
