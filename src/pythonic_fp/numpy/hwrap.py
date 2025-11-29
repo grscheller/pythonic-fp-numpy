@@ -124,4 +124,133 @@ class HWrapNDArrayNumber(HWrapNDArray):
         return f"HWrapNDArrayNumber({self._repr()})"
 
 
-# TODO: Breakout all the numeric types
+# NumPy numeric types.
+
+
+class HWrapNDArrayUInt8(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.uint8."""
+
+    def __init__(self, ndarray: npt.NDArray[np.int8]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayUInt8({self._repr()})"
+
+
+class HWrapNDArrayUInt16(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.uint16."""
+
+    def __init__(self, ndarray: npt.NDArray[np.uint16]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayUInt16({self._repr()})"
+
+
+class HWrapNDArrayUInt32(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.uint32."""
+
+    def __init__(self, ndarray: npt.NDArray[np.uint32]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayUInt32({self._repr()})"
+
+
+class HWrapNDArrayUInt64(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.uint64."""
+
+    def __init__(self, ndarray: npt.NDArray[np.uint64]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayUInt64({self._repr()})"
+
+
+class HWrapNDArrayInt8(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.int8."""
+
+    def __init__(self, ndarray: npt.NDArray[np.int8]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayInt8({self._repr()})"
+
+
+class HWrapNDArrayInt16(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.int16."""
+
+    def __init__(self, ndarray: npt.NDArray[np.int16]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayInt16({self._repr()})"
+
+
+class HWrapNDArrayInt32(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.int32."""
+
+    def __init__(self, ndarray: npt.NDArray[np.int32]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayInt32({self._repr()})"
+
+
+class HWrapNDArrayInt64(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.int64."""
+
+    def __init__(self, ndarray: npt.NDArray[np.int64]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayInt64({self._repr()})"
+
+
+class HWrapNDArrayFloat16(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.float16."""
+
+    def __init__(self, ndarray: npt.NDArray[np.float16]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayFloat16({self._repr()})"
+
+
+class HWrapNDArrayFloat32(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.float32."""
+
+    def __init__(self, ndarray: npt.NDArray[np.float32]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayFloat32({self._repr()})"
+
+
+class HWrapNDArrayFloat64(HWrapNDArray):
+    """Wrap NDArrays of dtype np.float64."""
+
+    def __init__(self, ndarray: npt.NDArray[np.float64]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayFloat64({self._repr()})"
+
+
+class HWrapNDArrayComplex64(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.complex64."""
+
+    def __init__(self, ndarray: npt.NDArray[np.complex64]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayComplex64({self._repr()})"
+
+class HWrapNDArrayComplex128(HWrapNDArrayNumber):
+    """Wrap NDArrays of dtype np.complex128."""
+
+    def __init__(self, ndarray: npt.NDArray[np.complex128]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f"HWrapNDArrayComplex128({self._repr()})"
