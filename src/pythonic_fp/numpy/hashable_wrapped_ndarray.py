@@ -18,6 +18,8 @@ import numpy as np
 import numpy.typing as npt
 
 __all__ = [
+    'DTypes',
+    'HWrapNDArray',
     'HWrapNDArrayNumber',
     'HWrapNDArrayString',
     'HWrapNDArrayBytes',
@@ -30,11 +32,13 @@ __all__ = [
 
 
 class DTypes(Enum):
-    """Iterable Blending Enums.
+    """Groups (Unions) of types closed to NumPy operations.
 
-    - **MergeEnum.Concat:** Concatenate first to last
-    - **MergeEnum.Merge:** Merge until one is exhausted
-    - **MergeEnum.Exhaust:** Merge until all are exhausted
+    While NumPy types are extensively covariant, the NumPy C internals
+    are somewhat invariant. NumPy also suffers from what I call "Fortran
+    Disease", types get "auto-promoted" to compatible "wider types" when
+    necessary. That is fine when dealing with operators on mixed types,
+    but NumPy will auto-promote with operations on the same type.
 
     """
 
@@ -53,20 +57,12 @@ class HWrapNDArray(ABC):
     Make NumPy NDArrays hashable.
 
     Just making an NDArray (np.array) readonly is not enough. This class
-    stores a read-only copy of the NDArray given to the constructor. The
-
-    .. warning::
-
-        For efficiency, encapsulation has been deliberately broken. The
-        __call__ method returns a reference to the actual underlying
-        NDArray, not a copy.
-
-        - Allows for faster slicing. A copy does not have to be made.
-        - Use the copy method if you want a read-write copy.
+    stores a read-only copy of the NDArray given to the constructor and
+    is hashable.
 
     """
 
-    __slots__ = "_ndarray", "_type", "_shape", "_hash"
+    __slots__ = '_ndarray', '_type', '_shape', '_hash'
 
     def __init__(self, ndarray: npt.NDArray[np.generic]) -> None:
         self._ndarray = np.array(ndarray, copy=True)
@@ -100,6 +96,18 @@ class HWrapNDArray(ABC):
     def __repr__(self) -> str: ...
 
     def __call__(self) -> npt.NDArray[np.number]:
+        """Return a reference to the stored NDArray.
+
+        .. warning::
+
+            For efficiency this method returns a reference to the
+            wrapped NDArray.
+
+            - Allows for faster slicing and faster operations.
+            - Use the copy method if you want a read-write copy.
+            - Never make the underlying NDArray writable!!!
+
+        """
         return np.array(self._ndarray)
 
     def __hash__(self) -> int:
@@ -114,13 +122,14 @@ class HWrapNDArray(ABC):
 
     def __str__(self) -> str:
         np_array_str = '  ' + str(self._ndarray).replace('\n', '\n  ')
-        return f"hwrap<\n{np_array_str}\n>"
+        return f'hwrap<\n{np_array_str}\n>'
 
     def _repr(self) -> str:
-        stripped_repr = " ".join(repr(self._ndarray).split())
-        return f"np.{stripped_repr}"
+        stripped_repr = ' '.join(repr(self._ndarray).split())
+        return f'np.{stripped_repr}'
 
     def copy(self) -> npt.NDArray[np.number]:
+        """Return a copy of the wrapped NDArray."""
         return np.array(self._ndarray, copy=True)
 
 
@@ -131,7 +140,7 @@ class HWrapNDArrayNumber(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayNumber({self._repr()})"
+        return f'HWrapNDArrayNumber({self._repr()})'
 
 
 class HWrapNDArrayString(HWrapNDArray):
@@ -141,7 +150,7 @@ class HWrapNDArrayString(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayStr({self._repr()})"
+        return f'HWrapNDArrayStr({self._repr()})'
 
 
 class HWrapNDArrayBytes(HWrapNDArray):
@@ -151,7 +160,7 @@ class HWrapNDArrayBytes(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayBytes({self._repr()})"
+        return f'HWrapNDArrayBytes({self._repr()})'
 
 
 class HWrapNDArrayVoid(HWrapNDArray):
@@ -161,7 +170,7 @@ class HWrapNDArrayVoid(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayVoid({self._repr()})"
+        return f'HWrapNDArrayVoid({self._repr()})'
 
 
 class HWrapNDArrayObject(HWrapNDArray):
@@ -171,7 +180,7 @@ class HWrapNDArrayObject(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayObject({self._repr()})"
+        return f'HWrapNDArrayObject({self._repr()})'
 
 
 class HWrapNDArrayDateTime(HWrapNDArray):
@@ -181,7 +190,7 @@ class HWrapNDArrayDateTime(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayTimeDelta({self._repr()})"
+        return f'HWrapNDArrayTimeDelta({self._repr()})'
 
 
 class HWrapNDArrayTimeDelta(HWrapNDArray):
@@ -191,14 +200,25 @@ class HWrapNDArrayTimeDelta(HWrapNDArray):
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayTimeDelta({self._repr()})"
+        return f'HWrapNDArrayTimeDelta({self._repr()})'
 
 
 class HWrapNDArrayBool(HWrapNDArray):
-    """Wrap NDArrays of Booleans."""
+    """Wrap NDArrays of Booleans.
+
+    NumPy Booleans are actual Booleans, unlike Python bools which are
+    subtypes of int.
+
+    .. note::
+
+        - ***** uses component-wise Boolean **and**
+        - **+** uses component-wise Boolean **or**
+        - **@** does matrix multiplication using **and** then **or**
+
+    """
 
     def __init__(self, ndarray: npt.NDArray[np.bool_]) -> None:
         super().__init__(ndarray)
 
     def __repr__(self) -> str:
-        return f"HWrapNDArrayBool({self._repr()})"
+        return f'HWrapNDArrayBool({self._repr()})'
