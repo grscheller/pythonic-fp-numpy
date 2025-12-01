@@ -1,6 +1,6 @@
 [project]
 name = "pythonic-fp-numpy"
-version = "0.1.0"
+version = "0.1.1"
 readme = "README.rst"
 requires-python = ">=3.13"
 license = { file = "LICENSE" }
@@ -33,6 +33,7 @@ Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
 [project.optional-dependencies]
 test = [
+  "boring-math-abstract-algebra",
   "pytest>=8.4.1",
 ]
 
