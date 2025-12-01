@@ -26,10 +26,10 @@ dependencies = [
 dynamic = ["description"]
 
 [project.urls]
-Changelog = "https://github.com/grscheller/pythonic-fp-circulararray/blob/main/CHANGELOG.rst"
-Documentation = "https://grscheller.github.io/pythonic-fp/circulararray/development/build/html/"
+Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.rst"
+Documentation = "https://grscheller.github.io/pythonic-fp/numpy/development/build/html/"
 Homepage = "https://grscheller.github.io/pythonic-fp/homepage/build/html/"
-Source = "https://github.com/grscheller/pythonic-fp-circulararray"
+Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
 [project.optional-dependencies]
 test = [
