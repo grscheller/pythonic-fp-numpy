@@ -12,6 +12,9 @@ Part of the
 <https://grscheller.github.io/pythonic-fp>`_
 PyPI projects.
 
+Modules
+-------
+
 Module hashable_wrapped_ndarray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
