@@ -17,8 +17,14 @@ See `Semantic Versioning 2.0.0 <https://semver.org>`_.
 Releases and Important Milestones
 ---------------------------------
 
-PyPI v0.1.0 - TBD
-~~~~~~~~~~~~~~~~~
+PyPI v0.1.1 - 2025-12-01
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fixed problem with the extra test dependencies.
+
+
+PyPI v0.1.0 - 2025-11-30
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initial PyPI release.
 
@@ -32,5 +38,5 @@ of my boring-math-abstract-algebra PyPI project.
 
 Makes an NDArray readonly and hashable.
 
-Will need to drop the "only requires the Python std library requirement
+Will need to drop the "only requires the Python std library" requirement
 for pythonic-fp projects.
