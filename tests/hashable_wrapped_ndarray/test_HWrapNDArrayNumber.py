@@ -44,7 +44,7 @@ D = m2x2(np_D)
 E = m2x2(np_E)
 
 
-class Test_bool3:
+class Test_number_with_int32:
     def test_equality(self) -> None:
         assert Eye * Eye == Eye
         assert Eye * A == A
@@ -65,15 +65,22 @@ class Test_bool3:
         assert D * D is Eye
         assert A * B is E
 
-    def test_create(self) -> None:
-        np_see = HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))
-        See = m2x2(np_see)
-        assert See == C
-        assert See is C
-
     def test_pow(self) -> None:
         Eye**5 == Eye
         Eye**5 is Eye
 
     def test_str(self) -> None:
         assert str(A()) == 'hwrap<\n  [[ 5 -1]\n   [ 0  2]]\n>'
+
+    def test_repr(self) -> None:
+        assert repr(np_eye) == 'HWrapNDArrayNumber(np.array([[1,0],[0,1]],dtype=int32))'
+        assert repr(np_A) == 'HWrapNDArrayNumber(np.array([[5,-1],[0,2]],dtype=int32))'
+        assert repr(np_B) == 'HWrapNDArrayNumber(np.array([[2,-1],[-1,2]],dtype=int32))'
+        assert repr(HWrapNDArrayNumber(np_A() @ np_B())) == 'HWrapNDArrayNumber(np.array([[11,-7],[-2,4]],dtype=int32))'
+
+    def test_create(self) -> None:
+        np_see = HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))
+        See = m2x2(np_see)
+        assert See == C
+        assert See is C
+        assert repr(np_see) == 'HWrapNDArrayNumber(np.array([[1,1],[1,1]],dtype=int32))'

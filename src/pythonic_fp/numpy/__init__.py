@@ -18,19 +18,17 @@ FP NumPy Tools
 
 Package implementing functional programming tools for NumPy.
 
-- wrapping a non-writable NDArray to make it hashable
-
 Modules
 -------
 
-+-------------------------------------------+-------------------------------------------+
-| Module                                    | Description                               |
-+===========================================+===========================================+
-| **pythonic_fp_hashable_wrapped_ndarray**  | Variable storage capacity circular array. |
-+-------------------------------------------+-------------------------------------------+
++-------------------------------+--------------------------------------+
+| Module                        | Description                          |
++===============================+======================================+
+| **hashable_wrapped_ndarray**  | Make non-writable NDArrays hashable. |
++-------------------------------+--------------------------------------+
 
 """
 
 __author__ = 'Geoffrey R. Scheller'
-__copyright__ = 'Copyright (c) 2023-2025 Geoffrey R. Scheller'
+__copyright__ = 'Copyright (c) 2023-2026 Geoffrey R. Scheller'
 __license__ = 'Apache License 2.0'

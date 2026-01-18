@@ -5,7 +5,7 @@ PyPI project
 `pythonic-fp-numpy
 <https://pypi.org/project/pythonic-fp-numpy>`_.
 
-Python module implementing functional programming for NumPy.
+Python package implementing functional programming for NumPy.
 
 Part of the
 `pythonic-fp
@@ -18,7 +18,7 @@ Modules
 Module hashable_wrapped_ndarray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - wrap an NDArray and make it hashable
+  - wrap readonly NDArrays to make them hashable
   - prioritize performance over safety
   - see PyPI project boring-math-abstract-algebra for a use case
 
@@ -32,5 +32,5 @@ Documentation for this project is hosted on
 Copyright and License
 ---------------------
 
-Copyright (c) 2025 Geoffrey R. Scheller. Licensed under the Apache
+Copyright (c) 2025-2026 Geoffrey R. Scheller. Licensed under the Apache
 License, Version 2.0. See the LICENSE file for details.

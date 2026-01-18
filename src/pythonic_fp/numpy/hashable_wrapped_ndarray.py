@@ -1,4 +1,4 @@
-# Copyright 2025 Geoffrey R. Scheller
+# Copyright 2025-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,7 +32,18 @@ __all__ = [
 
 
 class DTypes(Enum):
-    """Groups (Unions) of types closed to NumPy operations.
+    """Enumeration of closed NumPy datatypes.
+
+    .. admonition:: Groups (Unions) of NumPy datatypes closed to NumPy operations.
+
+        - number
+        - str\_
+        - bytes
+        - datetime64
+        - timedelta64
+        - bool\_
+        - void
+        - object\_
 
     While NumPy types are extensively covariant, the NumPy C internals
     are somewhat invariant. NumPy also suffers from what I call "Fortran
@@ -75,16 +86,16 @@ class HWrapNDArray(ABC):
             self._type = DTypes.str_
         elif issubclass(dtype, np.bytes_):
             self._type = DTypes.bytes
-        elif issubclass(dtype, np.void):
-            self._type = DTypes.void
-        elif issubclass(dtype, np.object_):
-            self._type = DTypes.object_
         elif issubclass(dtype, np.datetime64):
             self._type = DTypes.datetime64
         elif issubclass(dtype, np.timedelta64):
             self._type = DTypes.timedelta64
         elif issubclass(dtype, np.bool_):
             self._type = DTypes.bool_
+        elif issubclass(dtype, np.void):
+            self._type = DTypes.void
+        elif issubclass(dtype, np.object_):
+            self._type = DTypes.object_
         else:
             msg = f"HWrapNDArray: Unknow np.dtype '{dtype}'"
             raise TypeError(msg)
@@ -125,7 +136,7 @@ class HWrapNDArray(ABC):
         return f'hwrap<\n{np_array_str}\n>'
 
     def _repr(self) -> str:
-        stripped_repr = ' '.join(repr(self._ndarray).split())
+        stripped_repr = ''.join(repr(self._ndarray).split())
         return f'np.{stripped_repr}'
 
     def copy(self) -> npt.NDArray[np.number]:
@@ -163,26 +174,6 @@ class HWrapNDArrayBytes(HWrapNDArray):
         return f'HWrapNDArrayBytes({self._repr()})'
 
 
-class HWrapNDArrayVoid(HWrapNDArray):
-    """Wrap NDArrays of arbitrary byte sequences."""
-
-    def __init__(self, ndarray: npt.NDArray[np.void]) -> None:
-        super().__init__(ndarray)
-
-    def __repr__(self) -> str:
-        return f'HWrapNDArrayVoid({self._repr()})'
-
-
-class HWrapNDArrayObject(HWrapNDArray):
-    """Wrap NDArrays of references to arbitrary Python objects."""
-
-    def __init__(self, ndarray: npt.NDArray[np.object_]) -> None:
-        super().__init__(ndarray)
-
-    def __repr__(self) -> str:
-        return f'HWrapNDArrayObject({self._repr()})'
-
-
 class HWrapNDArrayDateTime(HWrapNDArray):
     """Wrap NDArrays of references to arbitrary Python objects."""
 
@@ -203,6 +194,26 @@ class HWrapNDArrayTimeDelta(HWrapNDArray):
         return f'HWrapNDArrayTimeDelta({self._repr()})'
 
 
+class HWrapNDArrayVoid(HWrapNDArray):
+    """Wrap NDArrays of arbitrary byte sequences."""
+
+    def __init__(self, ndarray: npt.NDArray[np.void]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f'HWrapNDArrayVoid({self._repr()})'
+
+
+class HWrapNDArrayObject(HWrapNDArray):
+    """Wrap NDArrays of references to arbitrary Python objects."""
+
+    def __init__(self, ndarray: npt.NDArray[np.object_]) -> None:
+        super().__init__(ndarray)
+
+    def __repr__(self) -> str:
+        return f'HWrapNDArrayObject({self._repr()})'
+
+
 class HWrapNDArrayBool(HWrapNDArray):
     """Wrap NDArrays of Booleans.
 
@@ -211,9 +222,9 @@ class HWrapNDArrayBool(HWrapNDArray):
 
     .. note::
 
-        - ***** uses component-wise Boolean **and**
-        - **+** uses component-wise Boolean **or**
-        - **@** does matrix multiplication using **and** then **or**
+        - ``*`` uses component-wise Boolean **and**
+        - ``+`` uses component-wise Boolean **or**
+        - ``@`` does matrix multiplication using **and** then **or**
 
     """
 

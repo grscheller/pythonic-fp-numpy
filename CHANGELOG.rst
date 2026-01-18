@@ -17,6 +17,18 @@ See `Semantic Versioning 2.0.0 <https://semver.org>`_.
 Releases and Important Milestones
 ---------------------------------
 
+PyPI v0.1.2 - 2026-01-16
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fixed some documentation rough edges. Added *.pyi stub files. Updated __repr__
+behavior for HWrapNDArray derived classes. Eliminated spaces.
+
+Future directions.
+
+- define ``+``, ``*``, and ``@`` on wrapped arrays.
+- more tests
+
+
 PyPI v0.1.1 - 2025-12-01
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
