@@ -16,19 +16,19 @@
 NumPy Tools
 -----------
 
-..admonition:: Functional Tools for Numpy.
+..admonition:: Functional Tools for Numpy
 
     Package implementing functional programming tools for NumPy.
 
-    .. table:: modules
-        :widths: auto
-        :align: left
+.. table:: modules
+    :widths: auto
+    :align: left
 
-        ============================ ====================================
-        Module                       Description
-        ============================ ====================================
-        **hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
-        ============================ ====================================
+    ============================ ====================================
+    Module                       Description
+    ============================ ====================================
+    **hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
+    ============================ ====================================
 
 """
 
