@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Geoffrey R. Scheller
+# Copyright 2024-2026 Geoffrey R. Scheller
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,18 +14,15 @@
 
 """
 FP NumPy Tools
-==============
+--------------
 
 Package implementing functional programming tools for NumPy.
 
-Modules
--------
-
-+-------------------------------+--------------------------------------+
-| Module                        | Description                          |
-+===============================+======================================+
-| **hashable_wrapped_ndarray**  | Make non-writable NDArrays hashable. |
-+-------------------------------+--------------------------------------+
+============================ ====================================
+Module                       Description
+============================ ====================================
+**hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
+============================ ====================================
 
 """
 
