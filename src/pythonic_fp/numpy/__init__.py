@@ -13,16 +13,22 @@
 # limitations under the License.
 
 """
-FP NumPy Tools
---------------
+NumPy Tools
+-----------
 
-Package implementing functional programming tools for NumPy.
+..admonition:: Functional Tools for Numpy.
 
-============================ ====================================
-Module                       Description
-============================ ====================================
-**hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
-============================ ====================================
+    Package implementing functional programming tools for NumPy.
+
+    .. table:: modules
+        :widths: auto
+        :align: left
+
+        ============================ ====================================
+        Module                       Description
+        ============================ ====================================
+        **hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
+        ============================ ====================================
 
 """
 
