@@ -20,15 +20,7 @@ NumPy Tools
 
     Package implementing functional programming tools for NumPy.
 
-.. table:: modules
-    :widths: auto
-    :align: left
-
-    ============================ ====================================
-    Module                       Description
-    ============================ ====================================
-    **hashable_wrapped_ndarray** Make non-writable NDArrays hashable.
-    ============================ ====================================
+    - module **hashable_wrapped_ndarray:** Wrap a non-writable NDArray making result hashable.
 
 """
 
