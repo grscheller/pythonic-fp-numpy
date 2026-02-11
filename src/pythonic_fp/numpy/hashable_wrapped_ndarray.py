@@ -37,13 +37,13 @@ class DTypes(Enum):
     .. admonition:: Groups (Unions) of NumPy datatypes closed to NumPy operations.
 
         - number
-        - str\_
+        - str\\_
         - bytes
         - datetime64
         - timedelta64
-        - bool\_
+        - bool\\_
         - void
-        - object\_
+        - object\\_
 
     While NumPy types are extensively covariant, the NumPy C internals
     are somewhat invariant. NumPy also suffers from what I call "Fortran
