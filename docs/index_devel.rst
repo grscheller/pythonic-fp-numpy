@@ -1,8 +1,8 @@
-pythonic-fp-circulararray
--------------------------
+pythonic-fp-numpy
+-----------------
 
 Project
-`pythonic-fp-circulararray <https://pypi.org/project/pythonic-fp-circulararray/>`_
+`pythonic-fp-numpy <https://pypi.org/project/pythonic-fp-numpy/>`_
 one of the
 `Pythonic FP <https://grscheller.github.io/pythonic-fp/>`_
 PyPI projects.
@@ -27,4 +27,4 @@ PyPI projects.
     :caption: API Documentation
     :maxdepth: 1
 
-    docs/index
+    docs/hashable_wrapped_ndarray
