@@ -12,7 +12,7 @@ from sphinx.application import Sphinx
 project = 'Pythonic FP - Numpy'
 copyright = '2023-2026, Geoffrey R. Scheller'
 author = 'Geoffrey R. Scheller'
-release = '6.0.2'
+release = '0.1.2'
 
 
 def skip_abc_methods(

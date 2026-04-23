@@ -7,7 +7,7 @@ one of the
 `Pythonic FP <https://grscheller.github.io/pythonic-fp/>`_
 PyPI projects.
 
-**Proposed PyPI 6.0.3 release**
+**Proposed PyPI 0.1.3 release**
 
 .. toctree::
     :caption: Overview
