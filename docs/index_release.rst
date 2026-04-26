@@ -1,5 +1,5 @@
 pythonic-fp-numpy
------------------
+=================
 
 Project
 `pythonic-fp-numpy <https://pypi.org/project/pythonic-fp-numpy/>`_

@@ -1,4 +1,4 @@
-Pythonic FP - FP NumPy
+Pythonic FP - FP Numpy
 ======================
 
 PyPI project
@@ -9,7 +9,7 @@ Python package implementing functional programming for NumPy.
 
 Part of the
 `pythonic-fp
-<https://grscheller.github.io/pythonic-fp>`_
+<https://grscheller.github.io/pythonic-fp/homepage/html/>`_
 PyPI projects.
 
 Modules
@@ -27,7 +27,7 @@ Documentation
 
 Documentation for this project is hosted on
 `GitHub Pages
-<https://grscheller.github.io/pythonic-fp/numpy>`_.
+<https://grscheller.github.io/pythonic-fp-numpy>`_.
 
 Copyright and License
 ---------------------

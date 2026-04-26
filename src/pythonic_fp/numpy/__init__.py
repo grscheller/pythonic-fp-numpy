@@ -16,7 +16,7 @@
 NumPy Tools
 -----------
 
-..admonition:: Functional Tools for Numpy
+.. admonition:: Functional Tools for Numpy
 
     Package implementing functional programming tools for NumPy.
 
