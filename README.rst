@@ -9,7 +9,7 @@ Python package implementing functional programming for NumPy.
 
 Part of the
 `pythonic-fp
-<https://grscheller.github.io/pythonic-fp/homepage/html/>`_
+<https://grscheller.github.io/pythonic-fp/>`_
 PyPI projects.
 
 Modules
@@ -25,9 +25,9 @@ Module hashable_wrapped_ndarray
 Documentation
 -------------
 
-Documentation for this project is hosted on
+Documentation and other links for this project are hosted on
 `GitHub Pages
-<https://grscheller.github.io/pythonic-fp-numpy/development/html/>`_.
+<https://grscheller.github.io/pythonic-fp/projects/numpy.html>`_.
 
 Copyright and License
 ---------------------
