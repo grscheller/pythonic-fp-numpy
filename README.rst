@@ -27,7 +27,7 @@ Documentation
 
 Documentation for this project is hosted on
 `GitHub Pages
-<https://grscheller.github.io/pythonic-fp-numpy>`_.
+<https://grscheller.github.io/pythonic-fp-numpy/development/html/>`_.
 
 Copyright and License
 ---------------------
