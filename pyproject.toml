@@ -32,8 +32,8 @@ dynamic = ["description"]
 
 [project.urls]
 Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.rst"
-Documentation = "https://grscheller.github.io/pythonic-fp-numpy/"
-Homepage = "https://grscheller.github.io/pythonic-fp/homepage/html/"
+Documentation = "https://grscheller.github.io/pythonic-fp/projects/numpy.html"
+Homepage = "https://grscheller.github.io/pythonic-fp/"
 Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
 [project.optional-dependencies]
