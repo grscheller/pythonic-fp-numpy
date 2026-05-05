@@ -2,12 +2,12 @@ pythonic-fp-numpy
 =================
 
 Project
-`pythonic-fp-numpy <https://pypi.org/project/pythonic-fp-numpy/>`_
+`Pythonic FP - Numpy <https://pypi.org/project/pythonic-fp-numpy/>`_
 one of the
 `Pythonic FP <https://grscheller.github.io/pythonic-fp/>`_
 PyPI projects.
 
-**PyPI 0.1.2 release**
+|RELEASE_STRING|
 
 .. toctree::
     :caption: Overview
@@ -27,4 +27,4 @@ PyPI projects.
     :caption: API Documentation
     :maxdepth: 1
 
-    docs/hashable_wrapped_ndarray
+    docs/index
