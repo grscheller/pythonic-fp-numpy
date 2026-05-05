@@ -17,7 +17,7 @@ keywords = [
   "wrap",
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 3 - Alpha",
   "Framework :: Pytest",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: Apache Software License",
