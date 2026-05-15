@@ -71,16 +71,70 @@ class Test_number_with_int32:
 
     def test_str(self) -> None:
         assert str(A()) == '<< [[ 5 -1]\n    [ 0  2]] >>'
+        assert str(np_A) == '<< [[ 5 -1]\n    [ 0  2]] >>'
+        assert str(B()) == '<< [[ 2 -1]\n    [-1  2]] >>'
+        assert str(np_B) == '<< [[ 2 -1]\n    [-1  2]] >>'
+        assert str(C()) == '<< [[1 1]\n    [1 1]] >>'
+        assert str(np_C) == '<< [[1 1]\n    [1 1]] >>'
+        assert str(D()) == '<< [[0 1]\n    [1 0]] >>'
+        assert str(np_D) == '<< [[0 1]\n    [1 0]] >>'
+        assert str(E()) == '<< [[11 -7]\n    [-2  4]] >>'
+        assert str(np_E) == '<< [[11 -7]\n    [-2  4]] >>'
 
     def test_repr(self) -> None:
-        assert repr(np_eye) == "HWrapNDArrayNumber(np.array([[ 1, 0],[ 0, 1]], np.dtype('int32'))"
-        assert repr(np_A) == "HWrapNDArrayNumber(np.array([[ 5, -1],[ 0, 2]], np.dtype('int32'))"
-        assert repr(np_B) == "HWrapNDArrayNumber(np.array([[ 2, -1],[-1, 2]], np.dtype('int32'))"
-        assert repr(HWrapNDArrayNumber(np_A() @ np_B())) == "HWrapNDArrayNumber(np.array([[ 11, -7], [ -2, 4]], np.dtype('int32')"
+        assert repr(Eye()) == "HWrapNDArrayNumber(np.array([[1,0],[0,1]],dtype=np.int32))"
+        assert repr(np_eye) == "HWrapNDArrayNumber(np.array([[1,0],[0,1]],dtype=np.int32))"
+        assert repr(Zero()) == "HWrapNDArrayNumber(np.array([[0,0],[0,0]],dtype=np.int32))"
+        assert repr(np_zero) == "HWrapNDArrayNumber(np.array([[0,0],[0,0]],dtype=np.int32))"
+        assert repr(A()) == "HWrapNDArrayNumber(np.array([[5,-1],[0,2]],dtype=np.int32))"
+        assert repr(np_A) == "HWrapNDArrayNumber(np.array([[5,-1],[0,2]],dtype=np.int32))"
+        assert repr(B()) == "HWrapNDArrayNumber(np.array([[2,-1],[-1,2]],dtype=np.int32))"
+        assert repr(np_B) == "HWrapNDArrayNumber(np.array([[2,-1],[-1,2]],dtype=np.int32))"
+
+        assert B() == np_B
+        assert B() is np_B
+
+        np_mult = HWrapNDArrayNumber(np_A() @ np_B())
+        assert repr(np_mult) == "HWrapNDArrayNumber(np.array([[11,-7],[-2,4]],dtype=np.int32))"
+        np_mult_copy = eval(repr(np_mult))
+        assert np_mult == np_mult_copy
+        assert np_mult is not np_mult_copy
 
     def test_create(self) -> None:
         np_see = HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))
         See = m2x2(np_see)
         assert See == C
         assert See is C
-        assert repr(np_see) == 'HWrapNDArrayNumber(np.array([[1,1], [1,1]], dtype=int32))'
+        assert repr(np_see) == "HWrapNDArrayNumber(np.array([[1,1],[1,1]],dtype=np.int32))"
+
+        moo1 = HWrapNDArrayNumber(
+            np.array(
+                [[2, -3, 6],
+                [1, -1, 2],
+                [17, 18, -11],
+                [2, 1, 11]],
+                dtype=np.int32,
+            )
+        )
+        moo2 = HWrapNDArrayNumber(
+            np.array(
+                [[2, -3, 6],
+                [1, -1, 2],
+                [17, 18, -11],
+                [2, 1, 11]],
+                dtype='int32',
+            )
+        )
+        moo3 = HWrapNDArrayNumber(
+            np.array(
+                [[2, -3, 6],
+                [1, -1, 2],
+                [17, 18, -11],
+                [2, 1, 11]],
+                np.dtype('int32'),
+            )
+        )
+        moo1 == moo2 == moo3
+        moo1 is not moo2
+        moo1 is not moo3
+        moo2 is not moo3

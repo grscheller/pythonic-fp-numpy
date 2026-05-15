@@ -158,9 +158,9 @@ class HWrapNDArray(ABC):
     def _ndarray_repr(self) -> str:
         ndarray = self._ndarray
         repr_str = repr(ndarray)
-        repr_str = repr_str.replace('\n      ', '')
-        repr_str = repr_str.replace('  ', ' ')
-        repr_str = 'np.' + repr_str[:-1] + ', np.' + repr(ndarray.dtype) + ')'
+        repr_str = 'np.' + repr_str.replace('\n', '')
+        repr_str = repr_str.replace(' ', '') 
+        repr_str = repr_str.replace('=', "=np.")
         return repr_str
 
     @abstractmethod
@@ -211,7 +211,7 @@ class HWrapNDArrayNumber(HWrapNDArray):
             :returns: String to reproduce the wrapped numeric ndarray.
 
         """
-        return f'HWrapNDArrayNumber({self._ndarray_repr()})'
+        return 'HWrapNDArrayNumber(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayString(HWrapNDArray):
@@ -237,7 +237,7 @@ class HWrapNDArrayString(HWrapNDArray):
             :returns: String to reproduce the wrapped string ndarray.
 
         """
-        return f'HWrapNDArrayStr({self._ndarray_repr()})'
+        return 'HWrapNDArrayStr(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayBytes(HWrapNDArray):
@@ -265,7 +265,7 @@ class HWrapNDArrayBytes(HWrapNDArray):
                       byte sequence ndarray.
 
         """
-        return f'HWrapNDArrayBytes({self._ndarray_repr()})'
+        return 'HWrapNDArrayBytes(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayVoid(HWrapNDArray):
@@ -293,7 +293,7 @@ class HWrapNDArrayVoid(HWrapNDArray):
                       byte sequence ndarray.
 
         """
-        return f'HWrapNDArrayVoid({self._ndarray_repr()})'
+        return 'HWrapNDArrayVoid(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayObject(HWrapNDArray):
@@ -320,7 +320,7 @@ class HWrapNDArrayObject(HWrapNDArray):
                       reference ndarray.
 
         """
-        return f'HWrapNDArrayObject({self._ndarray_repr()})'
+        return 'HWrapNDArrayObject(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayDateTime(HWrapNDArray):
@@ -346,7 +346,7 @@ class HWrapNDArrayDateTime(HWrapNDArray):
             :returns: String to reproduce the wrapped datetime ndarray.
 
         """
-        return f'HWrapNDArrayTimeDelta({self._ndarray_repr()})'
+        return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayTimeDelta(HWrapNDArray):
@@ -372,7 +372,7 @@ class HWrapNDArrayTimeDelta(HWrapNDArray):
             :returns: String to reproduce the wrapped timedelta ndarray.
 
         """
-        return f'HWrapNDArrayTimeDelta({self._ndarray_repr()})'
+        return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayBool(HWrapNDArray):
@@ -408,4 +408,4 @@ class HWrapNDArrayBool(HWrapNDArray):
             :returns: String to reproduce the wrapped Boolean ndarray.
 
         """
-        return f'HWrapNDArrayBool({self._ndarray_repr()})'
+        return 'HWrapNDArrayBool(' + self._ndarray_repr() + ')'

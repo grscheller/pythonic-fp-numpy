@@ -17,6 +17,30 @@ See `Semantic Versioning 2.0.0 <https://semver.org>`_.
 Releases and Important Milestones
 ---------------------------------
 
+PyPI v1.0.0 - 2026-05-14
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now repr() produces something you can eval() to reproduce a `HWrapNDArray`.
+
+```python
+
+    import numpy as np
+    from pythonic_fp.numpy.hashable_wrapped_ndarray import HWrapNDArrayNumber
+
+    foo = HWrapNDArrayNumber(
+        np.array(
+            [[2, -3, 6],
+            [1, -1, 2],
+            [17, 18, -11],
+            [2, 1, 11]],
+            dtype=np.int32,
+        )
+    )
+
+   assert foo == eval(repr(foo))
+
+```
+
 Development Status Reappraisal - 2026-05-05
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
