@@ -5,7 +5,7 @@ PyPI project
 `pythonic-fp-numpy
 <https://pypi.org/project/pythonic-fp-numpy>`_.
 
-Python package implementing functional programming for NumPy.
+Python package implementing functional programming tools for NumPy.
 
 Part of the
 `pythonic-fp

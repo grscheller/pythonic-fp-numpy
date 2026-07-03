@@ -28,7 +28,7 @@ classifiers = [
 dependencies = [
   "numpy>=2.3.4",
 ]
-dynamic = ["description"]
+description = "FP tools for Numpy"
 
 [project.urls]
 Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.rst"
@@ -53,17 +53,8 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 
-[tool.pylsp-mypy]
-enabled = true
-live-mode = true
-dmypy = false
-strict = true
-report_progress = true
-
 [tool.pytest]
-addopts = [
-  "-ra",
-]
+addopts = ["-ra"]
 consider_namespace_packages = true
 testpaths = ["tests/"]
 
