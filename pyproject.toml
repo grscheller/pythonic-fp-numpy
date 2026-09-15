@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pythonic-fp-numpy"
-version = "1.0.0"
+version = "1.1.0"
 readme = "README.rst"
 requires-python = ">=3.13"
 authors = [
@@ -31,8 +31,7 @@ dependencies = [
 description = "FP tools for Numpy"
 
 [project.urls]
-Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.rst"
-Documentation = "https://grscheller.github.io/pythonic-fp/projects/numpy.html"
+Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.md"
 Homepage = "https://grscheller.github.io/pythonic-fp/"
 Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
