@@ -4,7 +4,6 @@ Python package implementing functional programming tools for NumPy.
 
 PyPI project
 [pythonic-fp-numpy](https://pypi.org/project/pythonic-fp-numpy).
-
 Part of the
 [pythonic-fp](https://grscheller.github.io/pythonic-fp/)
 PyPI projects.
