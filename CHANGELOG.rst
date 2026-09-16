@@ -1,84 +1,9 @@
 CHANGELOG
 =========
 
-PyPI pythonic-fp-numpy project.
+grscheller/pythonic-fp-numpy
+----------------------------
 
-Semantic Versioning
--------------------
+Changelog moved: CHANGELOG.rst ->
+`CHANGELOG.md <https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.md>`_
 
-Strict 3 digit semantic versioning
-
-- **MAJOR** version incremented for incompatible API changes
-- **MINOR** version incremented for backward compatible added functionality
-- **PATCH** version incremented for backward compatible bug fixes
-
-See `Semantic Versioning 2.0.0 <https://semver.org>`_.
-
-Releases and Important Milestones
----------------------------------
-
-PyPI v1.0.0 - 2026-05-14
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Now repr() produces something you can eval() to reproduce a `HWrapNDArray`.
-
-```python
-
-    import numpy as np
-    from pythonic_fp.numpy.hashable_wrapped_ndarray import HWrapNDArrayNumber
-
-    foo = HWrapNDArrayNumber(
-        np.array(
-            [[2, -3, 6],
-            [1, -1, 2],
-            [17, 18, -11],
-            [2, 1, 11]],
-            dtype=np.int32,
-        )
-    )
-
-   assert foo == eval(repr(foo))
-
-```
-
-Development Status Reappraisal - 2026-05-05
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Maintainer appraised the Development Status for
-pythonic-fp-numpy to be ``"3 - Alpha"``.
-
-PyPI v0.1.2 - 2026-01-16
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Fixed some documentation rough edges. Added *.pyi stub files. Updated __repr__
-behavior for HWrapNDArray derived classes. Eliminated spaces.
-
-Future directions.
-
-- define ``+``, ``*``, and ``@`` on wrapped arrays.
-- more tests
-
-
-PyPI v0.1.1 - 2025-12-01
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Fixed problem with the extra test dependencies.
-
-
-PyPI v0.1.0 - 2025-11-30
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Initial PyPI release.
-
-Update - 2025-11-26
-~~~~~~~~~~~~~~~~~~~
-
-Created GitHub repo for this new effort. 
-
-Previously wrote a hashable wrapper for NumPy NDArray for the test suite
-of my boring-math-abstract-algebra PyPI project.
-
-Makes an NDArray readonly and hashable.
-
-Will need to drop the "only requires the Python std library" requirement
-for pythonic-fp projects.
