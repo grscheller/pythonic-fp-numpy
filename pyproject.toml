@@ -32,6 +32,7 @@ description = "FP tools for Numpy"
 
 [project.urls]
 Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.md"
+Documentation ="https://grscheller.github.io/pythonic-fp-numpy/release/html/"
 Homepage = "https://grscheller.github.io/pythonic-fp/"
 Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
