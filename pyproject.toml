@@ -5,8 +5,9 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "pythonic-fp-numpy"
 version = "1.1.0"
+description = "FP tools for Numpy"
 readme = "README.md"
-requires-python = ">=3.12"  # syntactic floor: known to SyntaxError below this
+requires-python = ">=3.13"  # syntactic floor: known to SyntaxError below this
 authors = [
   { name = "Geoffrey R. Scheller", email = "geoffrey@scheller.com" },
 ]
@@ -22,13 +23,12 @@ classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.14",  # only versions which have past pytest
+  "Programming Language :: Python :: 3.14",  # tested: pytest test suite successful
   "Typing :: Typed",
 ]
 dependencies = [
   "numpy>=2.3.4",
 ]
-description = "FP tools for Numpy"
 
 [project.urls]
 Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.md"
@@ -36,14 +36,31 @@ Documentation ="https://grscheller.github.io/pythonic-fp-numpy/release/html/"
 Homepage = "https://grscheller.github.io/pythonic-fp/"
 Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
-[project.optional-dependencies]
+[dependency-groups]
+docs = [
+  "furo>=2025.12.19",
+  "sphinx>=9.1",
+]
+pub = [
+  "flit",
+]
 test = [
-  "boring-math-abstract-algebra>=1.1.0",
   "pytest>=8.4.1",
 ]
 
 [tool.flit.module]
 name = "pythonic_fp.numpy"
+
+[tool.flit.sdist]
+exclude = [
+  "docs/",
+  "tests/",
+]
+
+[tool.pytest]
+addopts = ["-ra"]
+consider_namespace_packages = true
+testpaths = ["tests/"]
 
 [tool.mypy]
 explicit_package_bases = true
@@ -53,13 +70,11 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_configs = true
 
-[tool.pytest]
-addopts = ["-ra"]
-consider_namespace_packages = true
-testpaths = ["tests/"]
-
 [tool.ruff]
 target-version = "py314"
+
+[tool.ruff.lint]
+ignore = ["RUF022", "E741"]
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
@@ -69,7 +84,6 @@ docstring-quotes = "double"
   "E731",
   "C901",
 ]
-"**/*.py" = ["E741"]
 
 [tool.ruff.format]
 quote-style = "single"
