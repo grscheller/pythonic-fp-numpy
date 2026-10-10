@@ -15,6 +15,13 @@ See [Semantic Versioning 2.0.0](https://semver.org).
 
 ## Releases and Important Milestones
 
+### PyPI release 1.1.0 - 2026-10-10
+
+Put <6 caps on dependencies, all pythonic-fp projects will be bumped
+up to the 6.0.0 release level, if not already at the 6.x.y level.
+The next pythonic-fp release will be 6.0.0 to track these for
+integration testing.
+
 ### PyPI v1.0.0 - 2026-05-14
 
 Now repr() produces something you can eval() to reproduce a `HWrapNDArray`.
