@@ -5,7 +5,7 @@
 #  - later needs to agree with pyproject.toml
 PROJECT_NAME = Numpy
 PYPI_NAME = numpy
-RELEASE_VERSION = 1.0.0
+RELEASE_VERSION = 1.1.0
 DEVEL_VERSION = 6.0.0
 CUSTOM_VERSION = 0.0.0
 
