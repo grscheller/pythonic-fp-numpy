@@ -3,23 +3,33 @@
 PyPI **pythonic-fp-numpy** project. Supports FP and OOP for NumPy
 data structures. Make NumPy data structures read-only and hashable.
 
-## Semantic Versioning
+## Release Versioning
 
-Strict 3 digit semantic versioning
+A tiered strict 3 digit semantic versioning will be used
 
-- **MAJOR** version incremented for incompatible API changes
-- **MINOR** version incremented for backward compatible added functionality
-- **PATCH** version incremented for backward compatible bug fixes
+- **MAJOR** incremented for incompatible API changes across Pythonic FP libraries
+- **MINOR** incremented for backward compatible added functionality
+- **PATCH** incremented for backward compatible bug fixes
 
-See [Semantic Versioning 2.0.0](https://semver.org).
+All versions with the same major release numbers should be consistent
+with each other. Note that lower floors will still be used.
 
 ## Releases and Important Milestones
 
+### PyPI release 6.0.0 - 2026-10-TBA
+
+No substantive changes were made to this library.
+
+Going forward, consistent releases of the Pythonic FP libraries will
+share a common major release number. Will use caps to keep the major
+release lines from mixing. Hence the `1.1.0 -> 6.0.0` jump in
+version numbers.
+
 ### PyPI release 1.1.0 - 2026-10-10
 
-Put <6 caps on dependencies, all pythonic-fp projects will be bumped
-up to the 6.0.0 release level, if not already at the 6.x.y level.
-The next pythonic-fp release will be 6.0.0 to track these for
+Put `<6` caps on dependencies, all pythonic-fp projects will be bumped
+up to the `6.0.0` release level, if not already at the `6.x.y` level.
+The next pythonic-fp release will be `6.0.0` to track these for
 integration testing.
 
 ### PyPI v1.0.0 - 2026-05-14
