@@ -5,13 +5,13 @@ Python package implementing functional programming tools for NumPy.
 PyPI project
 [pythonic-fp-numpy](https://pypi.org/project/pythonic-fp-numpy).
 Part of the
-[pythonic-fp](https://grscheller.github.io/pythonic-fp/)
+[pythonic-fp](https://grscheller.github.io/pythonic-fp)
 PyPI projects.
 
 ## Documentation
 
 Documentation and other links for this project are hosted on
-[GitHub Pages](https://grscheller.github.io/pythonic-fp/projects/numpy.html).
+[GitHub Pages](https://grscheller.github.io/pythonic-fp-numpy).
 
 ### Modules
 
