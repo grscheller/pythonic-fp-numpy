@@ -7,7 +7,7 @@ name = "pythonic-fp-numpy"
 version = "6.0.0"
 description = "FP tools for Numpy"
 readme = "README.md"
-requires-python = ">=3.14"  # floor: PEP 649/749 deferred annotations — class-level self-reference possible NameErrors on <3.14
+requires-python = ">=3.14"  # floor: PEP 649/749 deferred annotations — class-level self-reference NameErrors on <3.14
 authors = [
   { name = "Geoffrey R. Scheller", email = "geoffrey@scheller.com" },
 ]
