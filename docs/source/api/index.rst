@@ -1,13 +1,13 @@
 FP Numpy
 ========
 
-.. automodule:: pythonic_fp.iterables
+.. automodule:: pythonic_fp.numpy
     :no-members:
     :ignore-module-all:
     :no-index:
 
 .. toctree::
-    :caption: Wrapprd Hashable NDArray
+    :caption: Wrapped Hashable NDArray
     :maxdepth: 1
 
     hashable_wrapped_ndarray
