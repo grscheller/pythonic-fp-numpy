@@ -16,7 +16,7 @@ with each other. Note that lower floors will still be used.
 
 ## Releases and Important Milestones
 
-### PyPI release 6.0.0 - 2026-10-TBA
+### PyPI release 6.0.0 - 2026-11-08
 
 No substantive changes were made to this library.
 

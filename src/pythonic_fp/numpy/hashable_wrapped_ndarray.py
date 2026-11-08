@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from abc import ABC, abstractmethod
-from enum import auto, Enum
+from enum import Enum, auto
+
 import numpy as np
 import numpy.typing as npt
 
@@ -75,7 +76,7 @@ class HWrapNDArray(ABC):
 
     """
 
-    __slots__ = '_ndarray', '_type', '_shape', '_hash'
+    __slots__ = '_hash', '_ndarray', '_shape', '_type'
 
     def __init__(self, ndarray: npt.NDArray[np.generic]) -> None:
         """
@@ -127,7 +128,7 @@ class HWrapNDArray(ABC):
                 - Never make the underlying NDArray writable!!!
 
             """
-        return np.array(self._ndarray)
+        return np.array(iter(self._ndarray))
 
     def __hash__(self) -> int:
         """
@@ -185,7 +186,7 @@ class HWrapNDArray(ABC):
             Return a copy of the wrapped NDArray.
 
         """
-        return np.array(self._ndarray, copy=True)
+        return np.array(iter(self._ndarray), copy=True)
 
 
 class HWrapNDArrayNumber(HWrapNDArray):
