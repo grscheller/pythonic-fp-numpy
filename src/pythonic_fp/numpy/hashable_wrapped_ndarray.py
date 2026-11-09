@@ -128,7 +128,7 @@ class HWrapNDArray(ABC):
                 - Never make the underlying NDArray writable!!!
 
             """
-        return np.array(iter(self._ndarray))
+        return self._ndarray
 
     def __hash__(self) -> int:
         """
@@ -186,7 +186,7 @@ class HWrapNDArray(ABC):
             Return a copy of the wrapped NDArray.
 
         """
-        return np.array(iter(self._ndarray), copy=True)
+        return self._ndarray.copy()
 
 
 class HWrapNDArrayNumber(HWrapNDArray):
