@@ -82,7 +82,7 @@ class HWrapNDArray[D: np.generic](ABC):
         """
         .. admonition:: init
 
-            Base class for a hashable wrapped ndarray.
+            Base class for a hashable wrapped NDArray.
 
         """
         self._ndarray: npt.NDArray[D] = np.array(ndarray, copy=True)
@@ -191,9 +191,9 @@ class HWrapNDArray[D: np.generic](ABC):
 
 class HWrapNDArrayNumber(HWrapNDArray[np.number]):
     """
-    .. admonition:: wrapped numeric ndarray
+    .. admonition:: wrapped numeric NDArray
 
-        Class for a hashable wrapped numeric ndarray.
+        Wrapped NDArray of arbitrary NumPy numeric types.
 
     """
 
@@ -201,7 +201,7 @@ class HWrapNDArrayNumber(HWrapNDArray[np.number]):
         """
         .. admonition:: repr string
 
-            :returns: String to reproduce the wrapped numeric ndarray.
+            :returns: String to reproduce the wrapped numeric NDArray.
 
         """
         return 'HWrapNDArrayNumber(' + self._ndarray_repr() + ')'
@@ -209,9 +209,9 @@ class HWrapNDArrayNumber(HWrapNDArray[np.number]):
 
 class HWrapNDArrayString(HWrapNDArray[np.str_]):
     """
-    .. admonition:: wrapped string ndarray
+    .. admonition:: wrapped string NDArray
 
-        Class for a hashable wrapped string ndarray.
+        Wrapped NDArray of Unicode strings.
 
     """
 
@@ -227,10 +227,9 @@ class HWrapNDArrayString(HWrapNDArray[np.str_]):
 
 class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
     """
-    .. admonition:: wrapped byte ndarray
+    .. admonition:: wrapped byte NDArray
 
-        Class for a hashable wrapped null-terminated
-        byte sequence ndarray.
+        Wrapped NDArray of null-terminated bytes.
 
     """
 
@@ -239,7 +238,7 @@ class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
         .. admonition:: repr string
 
             :returns: String to reproduce the wrapped null-terminated
-                      byte sequence ndarray.
+                      byte sequence NDArray.
 
         """
         return 'HWrapNDArrayBytes(' + self._ndarray_repr() + ')'
@@ -247,10 +246,9 @@ class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
 
 class HWrapNDArrayVoid(HWrapNDArray[np.void]):
     """
-    .. admonition:: wrapped void ndarray
+    .. admonition:: wrapped void NDArray
 
-        Class for a hashable wrapped arbitrary byte
-        sequence ndarray.
+        Wrapped NDArray of arbitrary byte sequences.
 
     """
 
@@ -259,7 +257,7 @@ class HWrapNDArrayVoid(HWrapNDArray[np.void]):
         .. admonition:: repr string
 
             :returns: String to reproduce the wrapped arbitrary
-                      byte sequence ndarray.
+                      byte sequence NDArray.
 
         """
         return 'HWrapNDArrayVoid(' + self._ndarray_repr() + ')'
@@ -267,9 +265,9 @@ class HWrapNDArrayVoid(HWrapNDArray[np.void]):
 
 class HWrapNDArrayObject(HWrapNDArray[np.object_]):
     """
-    .. admonition:: wrapped object reference ndarray
+    .. admonition:: wrapped object reference NDArray
 
-        Class for a hashable wrapped object reference ndarray.
+        Wrapped NDArray of object references.
 
     """
 
@@ -278,7 +276,7 @@ class HWrapNDArrayObject(HWrapNDArray[np.object_]):
         .. admonition:: repr string
 
             :returns: String to reproduce the wrapped object
-                      reference ndarray.
+                      reference NDArray.
 
         """
         return 'HWrapNDArrayObject(' + self._ndarray_repr() + ')'
@@ -286,9 +284,9 @@ class HWrapNDArrayObject(HWrapNDArray[np.object_]):
 
 class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
     """
-    .. admonition:: wrapped datetime ndarray
+    .. admonition:: wrapped datetime NDArray
 
-        Class for a hashable wrapped datatime ndarray.
+        Wrapped NDArray of datetime references.
 
     """
 
@@ -296,7 +294,7 @@ class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
         """
         .. admonition:: repr string
 
-            :returns: String to reproduce the wrapped datetime ndarray.
+            :returns: String to reproduce the wrapped datetime NDArray.
 
         """
         return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
@@ -304,9 +302,9 @@ class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
 
 class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
     """
-    .. admonition:: wrapped timedelta ndarray
+    .. admonition:: wrapped timedelta NDArray
 
-        Class for a hashable wrapped timedelta ndarray.
+        Wrapped NDArray of timedelta references.
 
     """
 
@@ -314,7 +312,7 @@ class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
         """
         .. admonition:: repr string
 
-            :returns: String to reproduce the wrapped timedelta ndarray.
+            :returns: String to reproduce the wrapped timedelta NDArray.
 
         """
         return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
@@ -322,9 +320,9 @@ class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
 
 class HWrapNDArrayBool(HWrapNDArray[np.bool_]):
     """
-    .. admonition:: wrapped Boolean ndarray
+    .. admonition:: wrapped Boolean NDArray
 
-        Class for a hashable wrapped Boolean ndarray.
+        Wrapped NDArray of NumPy Booleans.
 
         .. note::
 
@@ -341,7 +339,7 @@ class HWrapNDArrayBool(HWrapNDArray[np.bool_]):
         """
         .. admonition:: repr string
 
-            :returns: String to reproduce the wrapped Boolean ndarray.
+            :returns: String to reproduce the wrapped Boolean NDArray.
 
         """
         return 'HWrapNDArrayBool(' + self._ndarray_repr() + ')'
