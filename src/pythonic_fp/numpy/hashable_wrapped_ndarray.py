@@ -66,7 +66,7 @@ class DTypes(Enum):
     bool_ = auto()
 
 
-class HWrapNDArray(ABC):
+class HWrapNDArray[D: np.generic](ABC):
     """
     Make NumPy NDArrays hashable.
 
@@ -78,14 +78,14 @@ class HWrapNDArray(ABC):
 
     __slots__ = '_hash', '_ndarray', '_shape', '_type'
 
-    def __init__(self, ndarray: npt.NDArray[np.generic]) -> None:
+    def __init__(self, ndarray: npt.NDArray[D]) -> None:
         """
         .. admonition:: init
 
             Base class for a hashable wrapped ndarray.
 
         """
-        self._ndarray = np.array(ndarray, copy=True)
+        self._ndarray: npt.NDArray[D] = np.array(ndarray, copy=True)
         self._ndarray.setflags(write=False)
 
         dtype = self._ndarray.dtype.type
@@ -112,7 +112,7 @@ class HWrapNDArray(ABC):
         self._shape = self._ndarray.shape
         self._hash = hash((self._ndarray.tobytes(), hash((self._shape, self._type))))
 
-    def __call__(self) -> npt.NDArray[np.number]:
+    def __call__(self) -> npt.NDArray[D]:
         """
         .. admonition:: call
 
@@ -127,7 +127,7 @@ class HWrapNDArray(ABC):
                 - Use the copy method if you want a read-write copy.
                 - Never make the underlying NDArray writable!!!
 
-            """
+        """
         return self._ndarray
 
     def __hash__(self) -> int:
@@ -160,8 +160,8 @@ class HWrapNDArray(ABC):
         ndarray = self._ndarray
         repr_str = repr(ndarray)
         repr_str = 'np.' + repr_str.replace('\n', '')
-        repr_str = repr_str.replace(' ', '') 
-        repr_str = repr_str.replace('=', "=np.")
+        repr_str = repr_str.replace(' ', '')
+        repr_str = repr_str.replace('=', '=np.')
         return repr_str
 
     @abstractmethod
@@ -179,31 +179,23 @@ class HWrapNDArray(ABC):
         user_str = '<< ' + user_str + ' >>'
         return user_str
 
-    def copy(self) -> npt.NDArray[np.number]:
+    def copy(self) -> npt.NDArray[D]:
         """
         .. admonition:: copy
 
-            Return a copy of the wrapped NDArray.
+            Return a read-write copy of the wrapped NDArray.
 
         """
         return self._ndarray.copy()
 
 
-class HWrapNDArrayNumber(HWrapNDArray):
+class HWrapNDArrayNumber(HWrapNDArray[np.number]):
     """
     .. admonition:: wrapped numeric ndarray
 
         Class for a hashable wrapped numeric ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.number]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of arbitrary NumPy numeric types.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -215,21 +207,13 @@ class HWrapNDArrayNumber(HWrapNDArray):
         return 'HWrapNDArrayNumber(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayString(HWrapNDArray):
+class HWrapNDArrayString(HWrapNDArray[np.str_]):
     """
     .. admonition:: wrapped string ndarray
 
         Class for a hashable wrapped string ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.str_]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of Unicode strings.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -241,7 +225,7 @@ class HWrapNDArrayString(HWrapNDArray):
         return 'HWrapNDArrayStr(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayBytes(HWrapNDArray):
+class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
     """
     .. admonition:: wrapped byte ndarray
 
@@ -249,14 +233,6 @@ class HWrapNDArrayBytes(HWrapNDArray):
         byte sequence ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.bytes_]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of null-terminated byte sequences.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -269,7 +245,7 @@ class HWrapNDArrayBytes(HWrapNDArray):
         return 'HWrapNDArrayBytes(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayVoid(HWrapNDArray):
+class HWrapNDArrayVoid(HWrapNDArray[np.void]):
     """
     .. admonition:: wrapped void ndarray
 
@@ -277,14 +253,6 @@ class HWrapNDArrayVoid(HWrapNDArray):
         sequence ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.void]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of arbitrary byte sequences.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -297,21 +265,13 @@ class HWrapNDArrayVoid(HWrapNDArray):
         return 'HWrapNDArrayVoid(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayObject(HWrapNDArray):
+class HWrapNDArrayObject(HWrapNDArray[np.object_]):
     """
     .. admonition:: wrapped object reference ndarray
 
         Class for a hashable wrapped object reference ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.object_]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of references to arbitrary Python objects.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -324,21 +284,13 @@ class HWrapNDArrayObject(HWrapNDArray):
         return 'HWrapNDArrayObject(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayDateTime(HWrapNDArray):
+class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
     """
     .. admonition:: wrapped datetime ndarray
 
         Class for a hashable wrapped datatime ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.datetime64]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of datetimes.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -350,21 +302,13 @@ class HWrapNDArrayDateTime(HWrapNDArray):
         return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayTimeDelta(HWrapNDArray):
+class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
     """
     .. admonition:: wrapped timedelta ndarray
 
         Class for a hashable wrapped timedelta ndarray.
 
     """
-    def __init__(self, ndarray: npt.NDArray[np.timedelta64]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of timedeltas.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
@@ -376,7 +320,7 @@ class HWrapNDArrayTimeDelta(HWrapNDArray):
         return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
 
 
-class HWrapNDArrayBool(HWrapNDArray):
+class HWrapNDArrayBool(HWrapNDArray[np.bool_]):
     """
     .. admonition:: wrapped Boolean ndarray
 
@@ -392,15 +336,6 @@ class HWrapNDArrayBool(HWrapNDArray):
             - ``@`` matrix multiplication using **and** then **or**
 
     """
-
-    def __init__(self, ndarray: npt.NDArray[np.bool_]) -> None:
-        """
-        .. admonition:: init
-
-            Wrap NDArray of Booleans.
-
-        """
-        super().__init__(ndarray)
 
     def __repr__(self) -> str:
         """
