@@ -197,6 +197,8 @@ class HWrapNDArrayNumber(HWrapNDArray[np.number]):
 
     """
 
+    __slots__ = ()
+
     def __repr__(self) -> str:
         """
         .. admonition:: repr string
@@ -215,6 +217,8 @@ class HWrapNDArrayString(HWrapNDArray[np.str_]):
 
     """
 
+    __slots__ = ()
+
     def __repr__(self) -> str:
         """
         .. admonition:: repr string
@@ -232,6 +236,8 @@ class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
         Wrapped NDArray of null-terminated bytes.
 
     """
+
+    __slots__ = ()
 
     def __repr__(self) -> str:
         """
@@ -252,6 +258,8 @@ class HWrapNDArrayVoid(HWrapNDArray[np.void]):
 
     """
 
+    __slots__ = ()
+
     def __repr__(self) -> str:
         """
         .. admonition:: repr string
@@ -270,6 +278,8 @@ class HWrapNDArrayObject(HWrapNDArray[np.object_]):
         Wrapped NDArray of object references.
 
     """
+
+    __slots__ = ()
 
     def __repr__(self) -> str:
         """
@@ -290,6 +300,8 @@ class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
 
     """
 
+    __slots__ = ()
+
     def __repr__(self) -> str:
         """
         .. admonition:: repr string
@@ -307,6 +319,8 @@ class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
         Wrapped NDArray of timedelta references.
 
     """
+
+    __slots__ = ()
 
     def __repr__(self) -> str:
         """
@@ -334,6 +348,8 @@ class HWrapNDArrayBool(HWrapNDArray[np.bool_]):
             - ``@`` matrix multiplication using **and** then **or**
 
     """
+
+    __slots__ = ()
 
     def __repr__(self) -> str:
         """
