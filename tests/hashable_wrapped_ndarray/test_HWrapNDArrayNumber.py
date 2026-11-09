@@ -15,7 +15,6 @@
 from typing import Any
 
 import numpy as np
-import numpy.typing as npt
 import pytest
 from boring_math.abstract_algebra.algebras.semigroup import Semigroup
 
@@ -31,14 +30,12 @@ from pythonic_fp.numpy.hashable_wrapped_ndarray import (
     HWrapNDArrayVoid,
 )
 
-type I32_2x2 = HWrapNDArrayNumber[npt.NDArray[np.int32]]
+type I32 = HWrapNDArrayNumber # for convenience
 
-
-def matrix_mult(left: I32_2x2, right: I32_2x2) -> I32_2x2:
+def matrix_mult(left: I32, right: I32) -> I32:
     return HWrapNDArrayNumber(left() @ right())
 
-
-m2x2 = Semigroup[I32_2x2](mult=matrix_mult)
+m2x2 = Semigroup[I32](mult=matrix_mult)
 
 np_eye = HWrapNDArrayNumber(np.eye(2, dtype=np.int32))
 np_zero = HWrapNDArrayNumber(np.zeros((2, 2), dtype=np.int32))
