@@ -89,16 +89,16 @@ class HWrapNDArray[D: np.generic](ABC):
         self._ndarray.setflags(write=False)
 
         dtype = self._ndarray.dtype.type
-        if issubclass(dtype, np.number):
+        if issubclass(dtype, np.timedelta64):
+            self._type = DTypes.timedelta64
+        elif issubclass(dtype, np.number):
             self._type = DTypes.number
-        elif isinstance(dtype, np.str_):
+        elif issubclass(dtype, np.str_):
             self._type = DTypes.str_
         elif issubclass(dtype, np.bytes_):
             self._type = DTypes.bytes
         elif issubclass(dtype, np.datetime64):
             self._type = DTypes.datetime64
-        elif issubclass(dtype, np.timedelta64):
-            self._type = DTypes.timedelta64
         elif issubclass(dtype, np.bool_):
             self._type = DTypes.bool_
         elif issubclass(dtype, np.void):
