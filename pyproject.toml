@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pythonic-fp-numpy"
-version = "6.0.1"
+version = "6.1.0"
 description = "FP tools for Numpy"
 readme = "README.md"
 requires-python = ">=3.14"  # floor: PEP 649/749 deferred annotations — class-level self-reference NameErrors on <3.14
@@ -12,9 +12,9 @@ authors = [
   { name = "Geoffrey R. Scheller", email = "geoffrey@scheller.com" },
 ]
 keywords = [
-  "numpy",
-  "ndarray",
   "hashable",
+  "ndarray",
+  "numpy",
   "wrap",
 ]
 classifiers = [
@@ -33,7 +33,7 @@ dependencies = [
 
 [project.urls]
 Changelog = "https://github.com/grscheller/pythonic-fp-numpy/blob/main/CHANGELOG.md"
-Documentation ="https://grscheller.github.io/pythonic-fp-numpy"
+Documentation = "https://grscheller.github.io/pythonic-fp-numpy"
 Homepage = "https://grscheller.github.io/pythonic-fp"
 Source = "https://github.com/grscheller/pythonic-fp-numpy"
 
@@ -43,8 +43,8 @@ docs = [
   "sphinx>=9.1",
 ]
 test = [
-  "pytest>=8.4.1",
   "boring-math-abstract-algebra",
+  "pytest>=8.4.1",
 ]
 
 [tool.flit.module]
@@ -61,11 +61,6 @@ exclude = [
   "**/.dmypy.json",
 ]
 
-[tool.pytest]
-addopts = ["-ra"]
-consider_namespace_packages = true
-testpaths = ["tests/"]
-
 [tool.mypy]
 explicit_package_bases = true
 local_partial_types = true
@@ -78,6 +73,17 @@ warn_unused_configs = true
 [[tool.mypy.overrides]]
 module = ["tests.*"]
 strict_equality = false
+
+[tool.pytest]
+addopts = ["-ra"]
+consider_namespace_packages = true
+testpaths = ["tests/"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "error",
+  "ignore:HWrapNDArrayObject is deprecated:DeprecationWarning",
+]
 
 [tool.ruff]
 target-version = "py314"

@@ -14,6 +14,7 @@
 
 from abc import ABC, abstractmethod
 from enum import Enum, auto
+from warnings import deprecated
 
 import numpy as np
 import numpy.typing as npt
@@ -271,11 +272,20 @@ class HWrapNDArrayVoid(HWrapNDArray[np.void]):
         return 'HWrapNDArrayVoid(' + self._ndarray_repr() + ')'
 
 
+@deprecated(
+    'HWrapNDArrayObject is deprecated since 6.1.0 and will be removed in '
+    '7.0.0; object arrays cannot be hashed consistently with equality'
+)
 class HWrapNDArrayObject(HWrapNDArray[np.object_]):
     """
     .. admonition:: wrapped object reference NDArray
 
         Wrapped NDArray of object references.
+
+    .. deprecated:: 6.1.0
+
+        Object arrays cannot be hashed consistently with equality.
+        Use a typed dtype instead. Removed in 7.0.0.
 
     """
 
