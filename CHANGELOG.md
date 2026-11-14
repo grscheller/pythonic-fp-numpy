@@ -17,6 +17,12 @@ be used.
 
 ## Releases and Important Milestones
 
+
+### PyPI release 6.1.0 - 2026-11-14
+
+Deprecating HWrapNDArrayObject because object arrays cannot be hashed
+consistently with equality. Will be removed in version 7.0.0.
+
 ### PyPI release 6.0.0 - 2026-11-08
 
 No substantive changes were made to this library.
