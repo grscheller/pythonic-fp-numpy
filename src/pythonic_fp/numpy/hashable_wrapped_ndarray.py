@@ -316,7 +316,7 @@ class HWrapNDArrayDateTime(HWrapNDArray[np.datetime64]):
             :returns: String to reproduce the wrapped datetime NDArray.
 
         """
-        return 'HWrapNDArrayTimeDelta(' + self._ndarray_repr() + ')'
+        return 'HWrapNDArrayDateTime(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayTimeDelta(HWrapNDArray[np.timedelta64]):
