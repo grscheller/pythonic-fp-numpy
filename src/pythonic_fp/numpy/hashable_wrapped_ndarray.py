@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import re
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 from warnings import deprecated
@@ -158,12 +159,8 @@ class HWrapNDArray[D: np.generic](ABC):
         return np.array_equal(self._ndarray, other._ndarray)
 
     def _ndarray_repr(self) -> str:
-        ndarray = self._ndarray
-        repr_str = repr(ndarray)
-        repr_str = 'np.' + repr_str.replace('\n', '')
-        repr_str = repr_str.replace(' ', '')
-        repr_str = repr_str.replace('=', '=np.')
-        return repr_str
+        repr_str = 'np.' + ' '.join(repr(self._ndarray).split())
+        return re.sub(r'dtype=(?!object\))([A-Za-z_]\w*)\)', r'dtype=np.\1)', repr_str)
 
     @abstractmethod
     def __repr__(self) -> str: ...

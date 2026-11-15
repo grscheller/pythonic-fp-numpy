@@ -30,10 +30,12 @@ from pythonic_fp.numpy.hashable_wrapped_ndarray import (
     HWrapNDArrayVoid,
 )
 
-type I32 = HWrapNDArrayNumber # for convenience
+type I32 = HWrapNDArrayNumber  # for convenience
+
 
 def matrix_mult(left: I32, right: I32) -> I32:
     return HWrapNDArrayNumber(left() @ right())
+
 
 m2x2 = Semigroup[I32](mult=matrix_mult)
 
@@ -94,28 +96,29 @@ class Test_number_with_int32:
 
     def test_repr(self) -> None:
         assert (
-            repr(Eye()) == 'HWrapNDArrayNumber(np.array([[1,0],[0,1]],dtype=np.int32))'
+            repr(Eye()) == 'HWrapNDArrayNumber(np.array([[1, 0], [0, 1]], dtype=np.int32))'
         )
         assert (
-            repr(np_eye) == 'HWrapNDArrayNumber(np.array([[1,0],[0,1]],dtype=np.int32))'
+            repr(np_eye) == 'HWrapNDArrayNumber(np.array([[1, 0], [0, 1]], dtype=np.int32))'
         )
         assert (
-            repr(Zero()) == 'HWrapNDArrayNumber(np.array([[0,0],[0,0]],dtype=np.int32))'
+            repr(Zero()) == 'HWrapNDArrayNumber(np.array([[0, 0], [0, 0]], dtype=np.int32))'
         )
         assert (
-            repr(np_zero) == 'HWrapNDArrayNumber(np.array([[0,0],[0,0]],dtype=np.int32))'
+            repr(np_zero)
+            == 'HWrapNDArrayNumber(np.array([[0, 0],[0, 0]], dtype=np.int32))'
         )
         assert (
-            repr(A()) == 'HWrapNDArrayNumber(np.array([[5,-1],[0,2]],dtype=np.int32))'
+            repr(A()) == 'HWrapNDArrayNumber(np.array([[5, -1], [0,  2]],dtype=np.int32))'
         )
         assert (
-            repr(np_A) == 'HWrapNDArrayNumber(np.array([[5,-1],[0,2]],dtype=np.int32))'
+            repr(np_A) == 'HWrapNDArrayNumber(np.array([[5, -1], [0, 2]], dtype=np.int32))'
         )
         assert (
-            repr(B()) == 'HWrapNDArrayNumber(np.array([[2,-1],[-1,2]],dtype=np.int32))'
+            repr(B()) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1,  2]], dtype=np.int32))'
         )
         assert (
-            repr(np_B) == 'HWrapNDArrayNumber(np.array([[2,-1],[-1,2]],dtype=np.int32))'
+            repr(np_B) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1,  2]], dtype=np.int32))'
         )
 
         assert B() == np_B
@@ -124,7 +127,7 @@ class Test_number_with_int32:
         np_mult = HWrapNDArrayNumber(np_A() @ np_B())
         assert (
             repr(np_mult)
-            == 'HWrapNDArrayNumber(np.array([[11,-7],[-2,4]],dtype=np.int32))'
+            == 'HWrapNDArrayNumber(np.array([[11, -7], [-2,  4]], dtype=np.int32))'
         )
         np_mult_copy = eval(repr(np_mult))
         assert np_mult == np_mult_copy
@@ -136,18 +139,18 @@ class Test_number_with_int32:
         assert See == C
         assert See is C
         assert (
-            repr(np_see) == 'HWrapNDArrayNumber(np.array([[1,1],[1,1]],dtype=np.int32))'
+            repr(np_see) == 'HWrapNDArrayNumber(np.array([[1, 1], [1, 1]], dtype=np.int32))'
         )
 
         moo1 = HWrapNDArrayNumber(
             np.array(
-                [[2, -3, 6], [1, -1, 2], [17, 18, -11], [2, 1, 11]],
+                [[2, -3,  6], [1, -1, 2], [17, 18, -11], [2, 1, 11]],
                 dtype=np.int32,
             )
         )
         moo2 = HWrapNDArrayNumber(
             np.array(
-                [[2, -3, 6], [1, -1, 2], [17, 18, -11], [2, 1, 11]],
+                [[2, -3, 6], [1, -1,   2], [17, 18, -11], [2, 1,  11]],
                 dtype='int32',
             )
         )
@@ -164,13 +167,29 @@ class Test_number_with_int32:
 
 
 CASES = [
-    (HWrapNDArrayNumber, np.array([[2.0, 3.0], [-1.0, 5.0]], dtype=np.float64), DTypes.number),
+    (
+        HWrapNDArrayNumber,
+        np.array([[2.0, 3.0], [-1.0, 5.0]], dtype=np.float64),
+        DTypes.number,
+    ),
     (HWrapNDArrayString, np.array(['foo', 'bar', 'baz'], dtype=np.str_), DTypes.str_),
     (HWrapNDArrayBytes, np.array([b'hello', b'world'], dtype=np.bytes_), DTypes.bytes),
-    (HWrapNDArrayVoid, np.array([(1, 2.0)], dtype=[('i', 'i4'), ('f', 'f8')]), DTypes.void),
+    (
+        HWrapNDArrayVoid,
+        np.array([(1, 2.0)], dtype=[('i', 'i4'), ('f', 'f8')]),
+        DTypes.void,
+    ),
     (HWrapNDArrayObject, np.array([{1: 2}, [3, 4]], dtype=np.object_), DTypes.object_),
-    (HWrapNDArrayDateTime, np.array(['2026-11-09'], dtype='datetime64[D]'), DTypes.datetime64),
-    (HWrapNDArrayTimeDelta, np.array([1, 2, 3], dtype='timedelta64[D]'), DTypes.timedelta64),
+    (
+        HWrapNDArrayDateTime,
+        np.array(['2026-11-09'], dtype='datetime64[D]'),
+        DTypes.datetime64,
+    ),
+    (
+        HWrapNDArrayTimeDelta,
+        np.array([1, 2, 3], dtype='timedelta64[D]'),
+        DTypes.timedelta64,
+    ),
     (HWrapNDArrayBool, np.array([[True, False]], dtype=np.bool_), DTypes.bool_),
 ]
 
@@ -183,3 +202,32 @@ class Test_no_dict:
     @pytest.mark.parametrize(('arr_t', 'arr', 'expected'), CASES)
     def test_dtype_classified(self, arr_t: type, arr: Any, expected: Any) -> None:
         assert arr_t(arr)._type is expected
+
+
+AWKWARD_CASES = [
+    (HWrapNDArrayNumber, np.array([[5, -1], [0, 2]], dtype=np.int32)),
+    (HWrapNDArrayString, np.array(['a b', 'c=d'], dtype=np.str_)),
+    (HWrapNDArrayBytes, np.array([b'he llo'], dtype=np.bytes_)),
+    (HWrapNDArrayVoid, np.array([(1, 2.0)], dtype=[('i', 'i4'), ('f', 'f8')])),
+    (HWrapNDArrayDateTime, np.array(['2026-11-15'], dtype='datetime64[D]')),
+    (HWrapNDArrayTimeDelta, np.array([1, 2], dtype='timedelta64[D]')),
+    (HWrapNDArrayBool, np.array([[True, False]], dtype=np.bool_)),
+]
+
+
+class Test_repr:
+    @pytest.mark.parametrize(('arr_t', 'arr'), AWKWARD_CASES)
+    def test_repr_round_trips(self, arr_t: type, arr: Any) -> None:
+        """repr must be valid Python that reproduces an equal wrapper."""
+        wrapped = arr_t(arr)
+        assert eval(repr(wrapped)) == wrapped
+
+    @pytest.mark.parametrize(('arr_t', 'arr'), AWKWARD_CASES)
+    def test_repr_names_its_own_class(self, arr_t: type, arr: Any) -> None:
+        assert repr(arr_t(arr)).startswith(arr_t.__name__ + '(')
+
+
+class Test_deprecation:
+    def test_object_wrapper_warns(self) -> None:
+        with pytest.warns(DeprecationWarning, match='HWrapNDArrayObject is deprecated'):
+            HWrapNDArrayObject(np.array([{1: 2}], dtype=np.object_))

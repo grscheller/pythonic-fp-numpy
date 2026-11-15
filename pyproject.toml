@@ -78,8 +78,6 @@ strict_equality = false
 addopts = ["-ra"]
 consider_namespace_packages = true
 testpaths = ["tests/"]
-
-[tool.pytest.ini_options]
 filterwarnings = [
   "error",
   "ignore:HWrapNDArrayObject is deprecated:DeprecationWarning",

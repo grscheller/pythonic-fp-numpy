@@ -17,6 +17,9 @@ be used.
 
 ## Releases and Important Milestones
 
+### PyPI release 6.1.0 - 2026-11-TBD
+
+Bug fixes for repr().
 
 ### PyPI release 6.1.0 - 2026-11-14
 
