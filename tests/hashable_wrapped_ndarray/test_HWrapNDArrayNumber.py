@@ -106,19 +106,19 @@ class Test_number_with_int32:
         )
         assert (
             repr(np_zero)
-            == 'HWrapNDArrayNumber(np.array([[0, 0],[0, 0]], dtype=np.int32))'
+            == 'HWrapNDArrayNumber(np.array([[0, 0], [0, 0]], dtype=np.int32))'
         )
         assert (
-            repr(A()) == 'HWrapNDArrayNumber(np.array([[5, -1], [0,  2]],dtype=np.int32))'
+            repr(A()) == 'HWrapNDArrayNumber(np.array([[ 5, -1], [ 0, 2]], dtype=np.int32))'
         )
         assert (
-            repr(np_A) == 'HWrapNDArrayNumber(np.array([[5, -1], [0, 2]], dtype=np.int32))'
+            repr(np_A) == 'HWrapNDArrayNumber(np.array([[ 5, -1], [ 0, 2]], dtype=np.int32))'
         )
         assert (
-            repr(B()) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1,  2]], dtype=np.int32))'
+            repr(B()) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1, 2]], dtype=np.int32))'
         )
         assert (
-            repr(np_B) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1,  2]], dtype=np.int32))'
+            repr(np_B) == 'HWrapNDArrayNumber(np.array([[ 2, -1], [-1, 2]], dtype=np.int32))'
         )
 
         assert B() == np_B
@@ -127,7 +127,7 @@ class Test_number_with_int32:
         np_mult = HWrapNDArrayNumber(np_A() @ np_B())
         assert (
             repr(np_mult)
-            == 'HWrapNDArrayNumber(np.array([[11, -7], [-2,  4]], dtype=np.int32))'
+            == 'HWrapNDArrayNumber(np.array([[11, -7], [-2, 4]], dtype=np.int32))'
         )
         np_mult_copy = eval(repr(np_mult))
         assert np_mult == np_mult_copy

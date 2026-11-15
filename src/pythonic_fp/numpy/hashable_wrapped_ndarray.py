@@ -224,7 +224,7 @@ class HWrapNDArrayString(HWrapNDArray[np.str_]):
             :returns: String to reproduce the wrapped string ndarray.
 
         """
-        return 'HWrapNDArrayStr(' + self._ndarray_repr() + ')'
+        return 'HWrapNDArrayString(' + self._ndarray_repr() + ')'
 
 
 class HWrapNDArrayBytes(HWrapNDArray[np.bytes_]):
