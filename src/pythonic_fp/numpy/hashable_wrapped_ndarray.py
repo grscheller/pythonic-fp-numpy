@@ -83,6 +83,11 @@ class HWrapNDArray[D: np.generic](ABC):
         supplied NDArray write-ability is not affected. An actual
         reference to the wrapped copy is return for efficiency.
 
+        Violating this contract will silently break dictionaries using
+        HWrapNDArrays in the keys they use. The ``_shape`` attribute can
+        go stale. The ``_type`` attribute can go stale due to to type
+        auto-promotion.
+
     """
 
     __slots__ = '_hash', '_ndarray', '_shape', '_type'
