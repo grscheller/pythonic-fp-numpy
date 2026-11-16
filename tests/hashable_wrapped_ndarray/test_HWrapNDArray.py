@@ -95,6 +95,8 @@ class Test_number_with_int32:
         assert str(np_E) == '<< [[11 -7]\n    [-2  4]] >>'
 
     def test_repr(self) -> None:
+        # These tests are brittle. NumPy makes no guarantees that
+        # __repr__ methods remain consistent across versions.
         assert (
             repr(Eye()) == 'HWrapNDArrayNumber(np.array([[1, 0], [0, 1]], dtype=np.int32))'
         )

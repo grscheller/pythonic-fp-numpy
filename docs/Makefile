@@ -4,9 +4,9 @@
 # should agree with first two and one of the last two.
 PROJECT_NAME = Numpy
 PYPI_NAME = numpy
-CURR_ROLLING_RELEASE_VERSION = 6.1.0
-DEVEL_VERSION = 6.1.0
-PREV_ROLLING_RELEASE_VERSION = 1.1.0
+CURR_RELEASE = 6.1.1
+DEVEL_VERSION = 6.1.1
+PREV_RELASE = 6.1.0
 
 SPHINXOPTS ?=
 SPHINXBUILD ?= sphinx-build
@@ -36,12 +36,12 @@ clean: clean_prev_release clean_curr_release clean_devel clean_source clean_inde
 	@echo Removed all doc build artifacts.
 
 setup_curr_release: clean_curr_release clean_index_html
-	@python3 gen_conf.py curr_release "$(CURR_ROLLING_RELEASE_VERSION)" "$(PROJECT_NAME)" "$(PYPI_NAME)" > "$(SOURCEDIR)"/conf.py
+	@python3 gen_conf.py curr_release "$(CURR_RELEASE)" "$(PROJECT_NAME)" "$(PYPI_NAME)" > "$(SOURCEDIR)"/conf.py
 	@echo Generating source/conf.py for current rolling release
 
 setup_prev_release: clean_prev_release clean_index_html
-	@python3 gen_conf.py prev_release "$(PREV_ROLLING_RELEASE_VERSION)" "$(PROJECT_NAME)" "$(PYPI_NAME)" > "$(SOURCEDIR)"/conf.py
-	@sed -e 's/@CURR_RELEASE@/$(CURR_ROLLING_RELEASE_VERSION)/g'
+	@python3 gen_conf.py prev_release "$(PREV_RELASE)" "$(PROJECT_NAME)" "$(PYPI_NAME)" > "$(SOURCEDIR)"/conf.py
+	@sed -e 's/@CURR_RELEASE@/$(CURR_RELEASE)/g'
 	@echo Generating source/conf.py for previous rolling release
 
 setup_devel: clean_devel clean_index_html
@@ -50,9 +50,9 @@ setup_devel: clean_devel clean_index_html
 
 $(BUILDDIR)/index.html: index.html.in Makefile
 	@mkdir -p $(BUILDDIR)
-	@sed -e 's/@CURR_RELEASE@/$(CURR_ROLLING_RELEASE_VERSION)/g' \
+	@sed -e 's/@CURR_RELEASE@/$(CURR_RELEASE)/g' \
 	     -e 's/@DEVEL@/$(DEVEL_VERSION)/g' \
-         -e 's/@PREV_RELEASE@/$(PREV_ROLLING_RELEASE_VERSION)/g' \
+         -e 's/@PREV_RELEASE@/$(PREV_RELASE)/g' \
 	     -e 's/@PROJECTNAME@/$(PROJECT_NAME)/g' \
 	     -e 's/@PYPINAME@/$(PYPI_NAME)/g' \
 	     $< > $@

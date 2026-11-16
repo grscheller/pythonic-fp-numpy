@@ -76,6 +76,13 @@ class HWrapNDArray[D: np.generic](ABC):
     stores a read-only copy of the NDArray given to the constructor and
     is hashable.
 
+    .. admonition:: Contract
+
+        **DO NOT CHANGE** the underlying write-ability of the Wrapped
+        NDArray copied from the NDArray supplied the constructor. The
+        supplied NDArray write-ability is not affected. An actual
+        reference to the wrapped copy is return for efficiency.
+
     """
 
     __slots__ = '_hash', '_ndarray', '_shape', '_type'

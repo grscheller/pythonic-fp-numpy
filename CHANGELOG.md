@@ -19,7 +19,7 @@ be used.
 
 ### PyPI release 6.1.1 - 2026-11-15
 
-Bug fixes for repr().
+Bug fixes for class HWrapNDArray __repr__ methods.
 
 ### PyPI release 6.1.0 - 2026-11-14
 
