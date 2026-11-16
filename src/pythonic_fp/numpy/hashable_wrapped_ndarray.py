@@ -294,7 +294,7 @@ class HWrapNDArrayObject(HWrapNDArray[np.object_]):
     .. deprecated:: 6.1.0
 
         Object arrays cannot be hashed consistently with equality.
-        Use a typed dtype instead. Removed in 7.0.0.
+        Use a typed dtype instead. Will be removed in 7.0.0.
 
     """
 
