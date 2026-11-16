@@ -33,7 +33,7 @@ match build_type:
             f'**Last PyPI release {release} from previous rolling release**'
         )
     case _:
-        sys.exit(f'Error: unknown built_type {build_type} given')
+        sys.exit(f'Error: unknowned built_type {build_type} given')
 
 print(f'''# Generated conf.py Sphinx configuration executable
 

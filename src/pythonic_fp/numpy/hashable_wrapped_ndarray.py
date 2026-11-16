@@ -120,7 +120,7 @@ class HWrapNDArray[D: np.generic](ABC):
         elif issubclass(dtype, np.object_):
             self._type = DTypes.object_
         else:
-            msg = f"HWrapNDArray: Unknow np.dtype '{dtype}'"
+            msg = f"HWrapNDArray: Unknowed np.dtype '{dtype}'"
             raise TypeError(msg)
 
         self._shape = self._ndarray.shape
